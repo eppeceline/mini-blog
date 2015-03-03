@@ -23,7 +23,7 @@ class C_Posts extends C_Base
      */
     public function index()
     {
-        die('je suis dans index du controleur posts');
+        return ['data'=>null, 'view'=>'index_posts.php'];
     }
 
     /**

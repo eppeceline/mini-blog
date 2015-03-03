@@ -2,6 +2,9 @@
 //Définition de l’include_path, à adapter selon votre configuration
 set_include_path('configs:controllers:models:'.get_include_path());
 
+//Démarrage de la session
+session_start();
+
 //Enregistrement de la fonction à exécuter à chaque nouvelle instanciation
 spl_autoload_register(function ($className) {
     include($className . '.class.php');
