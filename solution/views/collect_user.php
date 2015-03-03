@@ -6,7 +6,7 @@
       method="post">
     <div>
         <label for="login">Votre adresse email</label>
-        <input type="text"
+        <input type="email"
                name="login"
                id="login"
                placeholder="jon.snow@nightwatch.net">
