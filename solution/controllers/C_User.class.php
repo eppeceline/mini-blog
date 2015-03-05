@@ -23,6 +23,7 @@ class C_User extends C_Base
     {
         $_SESSION ['user'] = $user['email'];
         $_SESSION ['connected'] = '1';
+        $_SESSION ['connected'] = 1;
         header('Location: http://localhost');
     }
 
