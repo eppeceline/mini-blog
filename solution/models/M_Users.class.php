@@ -10,7 +10,12 @@ class M_Users extends Model{
 
     public function createUser($email, $password){
         $sql = 'INSERT INTO users(email, password) VALUES(:email, :password)';
-        $pdost = $this->connexion->prepare($sql);
-        $pdost->execute([':email'=>$email,':password'=>$password]);
+        try{
+            $pdost = $this->connexion->prepare($sql);
+            $pdost->execute([':email'=>$email,':password'=>$password]);
+            return true;
+        }catch(PDOException $e){
+            return false;
+        }
     }
 }
