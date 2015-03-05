@@ -1,32 +1,54 @@
 <?php
 
+/**
+ * Class C_User
+ */
 class C_User extends C_Base
 {
+    /**
+     * @var M_Users|null
+     */
     private $userModel = null;
 
-    function __construct()
+    /**
+     *
+     */
+    public function __construct()
     {
         $this->userModel = new M_Users();
     }
 
+    /**
+     * @return array
+     */
     public function collect()
     {
         return ['data' => null, 'view' => 'collect_user.php'];
     }
 
+    /**
+     * @param $email
+     * @param $password
+     */
     private function create($email, $password)
     {
         $this->userModel->createUser($email, $password);
+        $this->connect(['email'=>$email]);
     }
 
+    /**
+     * @param $user
+     */
     private function connect($user)
     {
         $_SESSION ['user'] = $user['email'];
-        $_SESSION ['connected'] = '1';
         $_SESSION ['connected'] = 1;
         header('Location: http://localhost');
     }
 
+    /**
+     *
+     */
     public function disconnect()
     {
         session_destroy();
@@ -35,6 +57,9 @@ class C_User extends C_Base
         header('Location: http://localhost');
     }
 
+    /**
+     *
+     */
     public function check()
     {
         if(empty($_REQUEST['login'])||empty($_REQUEST['password']))
