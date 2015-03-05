@@ -17,8 +17,6 @@ class C_User extends C_Base
     private function create($email, $password)
     {
         $this->userModel->createUser($email, $password);
-        $user = ['email'=>$email];
-        $this->connect($user);
     }
 
     private function connect($user)
